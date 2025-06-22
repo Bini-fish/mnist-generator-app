@@ -3,11 +3,9 @@ import torch
 import torch.nn as nn
 import numpy as np
 
-
 class Generator(nn.Module):
     def __init__(self, z_dim, channels_img, features_g, num_classes, embed_size):
         super(Generator, self).__init__()
-        # This line uses `self.gen`, which matches the saved .pth file
         self.gen = nn.Sequential(
             self._block(z_dim + embed_size, features_g * 4, 7, 1, 0),
             self._block(features_g * 4, features_g * 2, 4, 2, 1),
@@ -32,8 +30,6 @@ class Generator(nn.Module):
 
 @st.cache_resource
 def load_model():
-    # --- FINAL OPTIMIZED VERSION (28x28) ---
-    # Model parameters must match the training script
     Z_DIM = 100
     IMG_CHANNELS = 1
     FEATURES_GEN = 64
@@ -41,8 +37,6 @@ def load_model():
     GEN_EMBEDDING = 100
     
     model = Generator(Z_DIM, IMG_CHANNELS, FEATURES_GEN, NUM_CLASSES, GEN_EMBEDDING)
-    
-    # Ensure 'generator.pth' is the new model you trained and uploaded
     model.load_state_dict(torch.load('generator.pth', map_location=torch.device('cpu')))
     model.eval()
     return model
@@ -79,7 +73,8 @@ if st.button("Generate Images"):
         for i, image_tensor in enumerate(generated_images):
             with cols[i]:
                 image_np = image_tensor.squeeze().cpu().numpy()
-                st.image(image_np, caption=f"Sample {i+1}", use_column_width=True)
+                # THIS LINE IS NOW CORRECTED
+                st.image(image_np, caption=f"Sample {i+1}", use_container_width=True)
 
 st.sidebar.info(
     "This app uses a Conditional Generative Adversarial Network (cGAN) "
