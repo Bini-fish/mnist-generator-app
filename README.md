@@ -8,25 +8,25 @@ A web application that uses a Conditional Generative Adversarial Network (cGAN) 
 
 ![App Screenshot](./screenshot.png)
 
-## 📜 Project Overview
+##  Project Overview
 
 This project demonstrates the power of generative models by allowing users to generate images of a specific digit on demand. Unlike a standard GAN that produces random digits, a **Conditional GAN (cGAN)** is used here, which takes a condition (the desired digit) as an additional input to guide the image generation process.
 
 The model was trained from scratch on the classic MNIST dataset using PyTorch and deployed as an interactive web application with Streamlit.
 
-## ✨ Features
+##  Features
 
 - **Digit Selection:** Choose any digit from 0 to 9 using a simple dropdown menu.
 - **On-Demand Generation:** Click the "Generate Images" button to get new results.
 - **Unique Images:** The app generates 5 unique, never-before-seen images of the selected digit with each click.
 
-## 🚀 Live Demo
+##  Live Demo
 
 You can access and interact with the live application here:
 
 **[Handwritten Digit Image Generator][https://mnist-generator-app-nokjarnuyxqxhywalprhkh.streamlit.app/]**
 
-## 🛠️ Tech Stack & Tools
+##  Tech Stack & Tools
 
 - **Model Framework:** PyTorch
 - **Web Application:** Streamlit
@@ -35,7 +35,7 @@ You can access and interact with the live application here:
 - **Deployment:** Streamlit Community Cloud
 - **Version Control:** Git & GitHub
 
-## 🧠 Model Architecture
+##  Model Architecture
 
 The core of this project is a **Conditional Generative Adversarial Network (cGAN)**, which consists of two neural networks competing against each other:
 
